@@ -27,7 +27,7 @@ void reverseSubArray(vector<int> &brr, int i, int j){
 int main(){
     int N, K;
     cin >> N >> K;
-    vector<int> arr(N, 0);
+    vector<int> arr(N, 0);  
     vector<int> brr(N, 0);
     for (int i = 0; i < N; i++){
         int temp;
