@@ -6,13 +6,36 @@ using namespace std;
 
 class Solution {
     public:
-        int recursiveApproach(vector<int> arr,int left , int right, int num) {
+        int indexOfFirstK(const vector<int>&arr, int k){
+            int left = 0, right = arr.size() - 1;
+            while (left<=right){
+                int mid = (left+right)/2;
+                if(arr[mid] == k){
+                    if(mid != 0 and arr[mid - 1] == k){
+                        right = mid - 1;
+                    }
+                    else{
+                        return mid;
+                    }
+                }
+                else if(arr[mid] < k){
+                    left = mid + 1;
+                }
+                else{
+                    right = mid - 1;
+                }
+            }
+            
+            return -1;
+        }
+
+        int recursiveApproach(const vector<int>&arr,int left , int right, int num) {
             if(left>right) return -1;
 
             int mid = (left + right)/2;
 
             if(arr[mid] == num){
-                if(arr[mid] == arr[mid - 1]){
+                if(mid != 0 and arr[mid] == arr[mid - 1]){
                     return recursiveApproach(arr, left, mid - 1, num);
                 }
                 else{
@@ -36,6 +59,10 @@ int main() {
         cin>>arr[i];
     }
     Solution s;
+    cout<<"Recursive Solution :- "<<endl;
     cout << s.recursiveApproach(arr, 0, N-1, num) << endl;
+
+    cout<<"Iterative Solution :- "<<endl;
+    cout<<s.indexOfFirstK(arr, num)<<endl;
     return 0;
 }
