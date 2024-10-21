@@ -14,7 +14,7 @@ class Node{
 
 class Solution {
     public:
-        void nodeAtDistK(Node *root) {
+        int nodeAtDistK(Node *root) {
             // TODO: Implement the method
         }
 };
